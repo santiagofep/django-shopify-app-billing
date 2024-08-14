@@ -22,9 +22,10 @@ Add the following to your Shop model:
 
 ```python
 from shopify_app_billing.models import ShopBilling
+from shopify_app.models import ShopBase
 
 
-class Shop(models.Model):
+class Shop(ShopBase):
     ...
     billing = models.OneToOneField(ShopBilling, on_delete=models.CASCADE, null=True, blank=True)
     ...
