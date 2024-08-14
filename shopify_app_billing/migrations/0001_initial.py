@@ -6,11 +6,6 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
     initial = True
-
-    dependencies = [
-        ("shops", "0007_alter_shop_shopify_app_api_key_overwrite_and_more"),
-    ]
-
     operations = [
         migrations.CreateModel(
             name="ShopBilling",
