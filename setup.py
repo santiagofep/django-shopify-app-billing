@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="django_shopify_app_billing",
-    version="0.0.3",
+    version="0.0.4",
     author="Santiago Fernandez",
     author_email="",
     packages=find_packages(),
