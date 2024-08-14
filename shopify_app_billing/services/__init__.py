@@ -6,6 +6,17 @@ def get_managed_pricing_plans():
     return f"https://admin.shopify.com/charges/{app_handle}/pricing_plans"
 
 
+def update_all_charges(shop):
+    response = shop.get(
+        "/admin/api/api_version/recurring_application_charges.json?limit=250"
+    )
+    response.raise_for_status()
+    charges = response.json()["recurring_application_charges"]
+    for charge in charges:
+        print(charge)
+        update_or_create_charge_by_rest_data(shop, charge)
+
+
 def update_or_create_charge_by_rest_data(shop, data):
     shop.billing.recurring_application_charges.update_or_create(
         shopify_rest_id=data["id"],
@@ -20,11 +31,11 @@ def update_or_create_charge_by_rest_data(shop, data):
 
 
 def activate_recuring_charge(shop, charge_id):
-    print(f"Activating charge {charge_id} for shop {shop}")
     response = shop.get(
         f"/admin/api/api_version/recurring_application_charges/{charge_id}.json"
     )
     response.raise_for_status()
     charge = response.json()["recurring_application_charge"]
     update_or_create_charge_by_rest_data(shop, charge)
+    update_all_charges(shop)
     return charge

@@ -35,4 +35,9 @@ class Shop(ShopBase):
             self.billing = ShopBilling.objects.create()
 
         super().save(*args, **kwargs)
+
+    @property
+    def plan_activated_redirect_path(self):
+        return f"/dashboard"
+
 ```
