@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="django_shopify_app_billing",
-    version="0.0.1",
+    version="0.0.2",
     author="Santiago Fernandez",
     author_email="",
     packages=find_packages(),
@@ -12,7 +12,7 @@ setup(
     description="A django app to help you manage the django-shopify-app package billing",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    package_data={"shopify_app": ["templates/shopify_app/*.html"]},
+    package_data={"shopify_app_billing": ["templates/shopify_app_billing/*.html"]},
     install_requires=[
         "Django >= 4.0.0",
         "pytest",
