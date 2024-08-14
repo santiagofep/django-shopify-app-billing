@@ -6,4 +6,4 @@ class ShopifyAppBillingConfig(AppConfig):
     name = "shopify_app_billing"
 
     def ready(self):
-        from . import signals
+        pass

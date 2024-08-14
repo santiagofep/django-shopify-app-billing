@@ -5,7 +5,7 @@ from .models import ShopBilling, RecurringApplicationCharge
 
 @admin.register(ShopBilling)
 class ShopBillingAdmin(admin.ModelAdmin):
-    readonly_fields = ("shop",)
+    pass
 
 
 @admin.register(RecurringApplicationCharge)
