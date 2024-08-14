@@ -12,8 +12,12 @@ def plans_redirect(request):
 
 @shop_session
 def activate_plan(request, *args, **kwargs):
+
     shop = request.shop
     recurring_charge_id = request.GET.get("charge_id")
+    if not shop or not recurring_charge_id:
+        return redirect("shopify_app_billing:plans")
+
     plan = activate_recuring_charge(shop, recurring_charge_id)
 
     if plan["status"] == "active":
