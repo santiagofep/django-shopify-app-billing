@@ -16,3 +16,17 @@ class ShopBilling(models.Model):
     @property
     def managed_pricing_plans_url(self):
         return get_managed_pricing_plans()
+
+    @property
+    def active_recurring_application_charge(self):
+        return self.recurring_application_charges.filter(status="active").first()
+
+    @property
+    def has_active_billing(self):
+        return self.active_recurring_application_charge is not None
+
+    @property
+    def active_recurring_application_charge_price(self):
+        if self.has_active_billing:
+            return self.active_recurring_application_charge.price
+        return None

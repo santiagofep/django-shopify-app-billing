@@ -39,3 +39,8 @@ def activate_recuring_charge(shop, charge_id):
     update_or_create_charge_by_rest_data(shop, charge)
     update_all_charges(shop)
     return charge
+
+
+def on_app_uninstall(shop):
+    active_charges = shop.billing.recurring_application_charges.filter(status="active")
+    active_charges.update(status="cancelled")
